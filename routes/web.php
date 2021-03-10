@@ -2,6 +2,8 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
+use App\Http\Controllers\PessoasController;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -28,5 +30,7 @@ $router->group(['prefix' => '/api'], function() use($router){
     $router->get('/prontuario/{cpf}', 'ProntuariosController@show');
     $router->get('/receita/{id}', 'ReceitasController@show');
     $router->get('/consulta/{id}', 'ConsultasController@show');
+    $router->get('telefone/{cpf}', 'PessoasController@buscaTelefones');
+    $router->get('/endereco/{cpf}', 'PessoasController@buscaEnderecos');
     
 });
