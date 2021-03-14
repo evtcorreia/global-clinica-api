@@ -15,12 +15,17 @@ class CriarProntuarios extends Migration
     {
         Schema::create('prontuarios', function (Blueprint $table) {
             $table->bigIncrements('prontuario_cod')->unsigned();
+            $table->bigInteger('paciente_id')->unsigned();
             $table->string ('pacientes_pessoa_pessoa_cpf',11);
             $table->char('prontuario_D_E_L_E_T_')->default('');
             $table->timestamps();
 
             $table->foreign('pacientes_pessoa_pessoa_cpf')
                     ->references('pessoa_pessoa_cpf')
+                    ->on('pacientes');
+
+            $table->foreign('paciente_id')
+                    ->references('id')
                     ->on('pacientes');
         });
     }

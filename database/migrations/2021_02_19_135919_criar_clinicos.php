@@ -14,9 +14,8 @@ class CriarClinicos extends Migration
     public function up()
     {
         Schema::create('clinicos', function (Blueprint $table) {
-            $table->increments('clinicos_id');
+            $table->bigIncrements('id');
             $table->string('pessoa_pessoa_cpf',11);
-            $table->string('clinico_especialidades');
             $table->string('clinico_prof_doc');
             $table->char('clinico_D_E_L_E_T',1)->default('');
             $table->bigInteger('tipo_documento_tipo_id')->unsigned();

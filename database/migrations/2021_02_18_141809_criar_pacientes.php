@@ -27,6 +27,7 @@ class CriarPacientes extends Migration
                     ->references('pessoa_cpf')
                     ->on('pessoas');
 
+
             
         });
     }

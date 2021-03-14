@@ -14,7 +14,7 @@ class CriarEndercos extends Migration
     public function up()
     {
         Schema::create('enderecos', function (Blueprint $table) {
-            $table->increments('endereco_id');
+            $table->bigIncrements('endereco_id')->unsigned();
             $table->string('endereco_logradouro');
             $table->string('endereco_bairro');
             $table->string('endereco_numero');

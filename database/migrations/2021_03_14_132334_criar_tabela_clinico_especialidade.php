@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePivoCorpoClinicoHasClinicas extends Migration
+class CriarTabelaClinicoEspecialidade extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,19 @@ class CreatePivoCorpoClinicoHasClinicas extends Migration
      */
     public function up()
     {
-        Schema::create('corpo_clinico_has_clinicas', function (Blueprint $table) {
+        Schema::create('clinico_especialidade', function (Blueprint $table) {
+            $table->bigInteger('especialidade_id')->unsigned();
             $table->bigInteger('clinico_id')->unsigned();
-            $table->bigInteger('clinica_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('clinica_id')
-                    ->references('id')
-                    ->on('clinicas');
+
+            $table->foreign('especialidade_id')
+                ->references('id')
+                ->on('especialidades');
+
             $table->foreign('clinico_id')
-                    ->references('id')
-                    ->on('clinicos');
+                ->references('id')
+                ->on('clinicos');
         });
     }
 
@@ -34,6 +36,6 @@ class CreatePivoCorpoClinicoHasClinicas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('corpo_clinico_has_clinicas');
+        Schema::dropIfExists('clinico_especialidade');
     }
 }

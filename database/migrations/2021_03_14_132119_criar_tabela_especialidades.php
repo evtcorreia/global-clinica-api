@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CriarClinicas extends Migration
+class CriarTabelaEspecialidades extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CriarClinicas extends Migration
      */
     public function up()
     {
-        Schema::create('clinicas', function (Blueprint $table) {
+        Schema::create('especialidades', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
-            $table->string('clinica_nome');
-            $table->string('clinica_cnpj',18);
-            $table->string('clinica_mail', 50);
-            $table->char('clinica_D_E_L_E_T_')->default('');
+            $table->string('especialidade_desc');
             $table->timestamps();
-
-
         });
     }
 
@@ -32,6 +27,6 @@ class CriarClinicas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clinicas');
+        Schema::dropIfExists('especialidades');
     }
 }

@@ -25,7 +25,7 @@ class CriarFuncionarios extends Migration
             $table->timestamps();
 
             $table->foreign('clinicas_clinica_cod')
-                    ->references('clinica_id')
+                    ->references('id')
                     ->on('clinicas');
             $table->foreign('pessoa_pessoa_cod')
                     ->references('pessoa_id')
