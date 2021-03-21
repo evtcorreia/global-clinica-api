@@ -13,7 +13,7 @@ class CreatePivoCorpoClinicoHasClinicas extends Migration
      */
     public function up()
     {
-        Schema::create('clinicas_clinicos', function (Blueprint $table) {
+        Schema::create('clinica_clinico', function (Blueprint $table) {
             $table->bigInteger('clinico_id')->unsigned();
             $table->bigInteger('clinica_id')->unsigned();
             $table->timestamps();

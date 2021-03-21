@@ -18,6 +18,7 @@ class CriarConsultas extends Migration
             $table->date('consulta_data');
             $table->time('consulta_horario');
             $table->string('consulta_info');
+            $table->bigInteger('consulta_status_status_id')->unsigned();
             $table->char('consulta_D_E_L_E_T_',1)->default('');
             $table->bigInteger('prontuarios_prontuario_cod')->unsigned();
             $table->string('corpo_clinico_pessoa_pessoa_cpf',11);
