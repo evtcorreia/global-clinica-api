@@ -14,5 +14,17 @@ class Endereco extends Model
 
     }
 
+    public function cidade()
+    {
+        return $this->hasOne(Cidade::class, 'id', 'cidades_cidade_id');
+    }
+
+    public function estado()
+    {
+        return $this->hasOne(Estado::class, 'id', 'estados_estado_id');
+    }
+
+    
+
 
 }

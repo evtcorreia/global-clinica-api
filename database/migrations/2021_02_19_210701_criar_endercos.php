@@ -28,9 +28,9 @@ class CriarEndercos extends Migration
             $table->bigInteger('estados_estado_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('pessoa_pessoa_cpf')
-                    ->references('pessoa_cpf')
-                    ->on('pessoas');
+            //$table->foreign('pessoa_pessoa_cpf')
+                    //->references('pessoa_cpf')
+                    //->on('pessoas');
 
             $table->foreign('estados_estado_id')
                     ->references('id')

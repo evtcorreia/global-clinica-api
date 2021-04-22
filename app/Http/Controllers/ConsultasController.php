@@ -14,6 +14,7 @@ class ConsultasController
         $receitas = $consulta->receitas()->get();
 
         return $receitas;
-    }    
+    }
+        
     
 }

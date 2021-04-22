@@ -11,7 +11,7 @@ class Pessoa extends Model
 
     public function endereco()
     {
-        return $this->hasOne(Endereco::class, 'pessoa_pessoa_cpf', 'pessoa_cpf');
+        return $this->hasOne(Endereco::class, 'endereco_id', 'enderecos_endereco_id');
     }
     
     public function telefones()
