@@ -24,6 +24,11 @@ class Endereco extends Model
         return $this->hasOne(Estado::class, 'id', 'estados_estado_id');
     }
 
+    public function clinicas()
+    {
+        return $this->belongsTo(Clinica::class,  'endereco_id', 'enderecos_endereco_id');
+    }
+
     
 
 

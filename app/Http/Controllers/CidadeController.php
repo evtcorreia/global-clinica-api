@@ -27,9 +27,9 @@ use App\Endereco;
 
         public function buscaCidade($id)
         {
-            $endereco = Endereco::where('endereco_id', $id)->first();
+            $endereco = Endereco::where('cidades_cidade_id', $id)->first();
 
-            $cidade = $endereco->cidade()->first();
+            $cidade = $endereco->clinicas()->get();
 
             return $cidade;
         }

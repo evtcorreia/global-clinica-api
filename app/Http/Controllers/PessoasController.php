@@ -40,14 +40,13 @@ class PessoasController
 
         $endereco = $pessoa->endereco()->first();
 
-        //$cidade = $endereco->cidade()->first();
 
         $estado = $endereco->estado()->first();
 
 
 
         return $endereco;
-        //return $estado;
+        
     }
     
 }

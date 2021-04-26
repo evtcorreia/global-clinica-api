@@ -1,15 +1,19 @@
 <?php  
+
+
     namespace App\Http\Controllers;
 
     use App\Clinica;
+    use App\Endereco;
 
     class ClinicasController
     {
         public function show($id)
         {
-            $clinica = Clinica::where('id', $id)->first();
-            $clinicas = $clinica->cidade()->get();
-
-            return $clinicas;
+            
+            $enderecos = Endereco::where('cidades_cidade_id', $id)
+                ->join('clinicas', 'enderecos_endereco_id', '=','endereco_id')
+                ->get();
+            return $enderecos;
         }
     }
