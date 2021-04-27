@@ -27,10 +27,12 @@ use App\Endereco;
 
         public function buscaCidade($id)
         {
-            $endereco = Endereco::where('cidades_cidade_id', $id)->first();
 
-            $cidade = $endereco->clinicas()->get();
+            
+            $endereco = Cidade::where('id', $id)->first();
 
-            return $cidade;
+           // $cidade = $endereco->cidade()->first();
+
+            return $endereco;
         }
     }
