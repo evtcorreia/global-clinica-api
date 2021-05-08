@@ -39,5 +39,8 @@ $router->group(['prefix' => '/api'], function() use($router){
     $router->get('/cidade/busca/{id}','CidadeController@buscaCidade');
     $router->get('/cidades/{id}','CidadeController@cidade');
     $router->get('/clinicas/cidade/{id}', 'ClinicasController@show');
+    //$router->get('/clinicas/medicos/{id}', 'ClinicasController@especialidades');
+    $router->get('/clinicas/especialidades/{id}', 'ClinicasController@especialidades');
+    $router->get('/clinicas/medicos/especialidade/{id}', 'EspecialidadesController@medicos');
     
 });

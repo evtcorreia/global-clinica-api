@@ -13,4 +13,10 @@ class Clinica extends Model
     {
         return $this->hasOne(Endereco::class, 'endereco_id', 'enderecos_endereco_id');
     }
+
+    public function medicos()
+    {
+        return $this->belongsToMany(Medico::class,'clinica_clinico', 'clinica_id', 'clinico_id');
+    }
+
 }
