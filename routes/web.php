@@ -25,12 +25,19 @@ $router->group(['prefix' => '/api'], function() use($router){
     
     $router->get('/pessoas','PessoasController@index');
     $router->get('/pessoa/{cpf}','PessoasController@buscaPorCpf');
+
     $router->get('/paciente/{cpf}', 'PacientesController@show');
+
     $router->get('/exame/{id}', 'ExameController@show');
+
     $router->get('/prontuario/{cpf}', 'ProntuariosController@show');
     $router->get('/prontuario/consulta-aberta/{cpf}', 'ProntuariosController@consultasAbertas');
+
     $router->get('/receita/{id}', 'ReceitasController@show');
+
     $router->get('/consulta/{id}', 'ConsultasController@show');
+    $router->post('/consulta', 'ConsultasController@store');
+
     $router->get('telefone/{cpf}', 'PessoasController@buscaTelefones');
     $router->get('/endereco/{cpf}', 'PessoasController@buscaEnderecos');
     $router->get('/estados','EstadosController@all');

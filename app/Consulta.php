@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Consulta extends Model
 {
     protected $table = 'consultas';
+    protected $fillable = ['consulta_data', 'consulta_horario','prontuarios_prontuario_cod','corpo_clinico_pessoa_pessoa_cpf'];
 
     public function prontuario()
     {
