@@ -19,7 +19,11 @@ class PessoasController
 
     public function buscaPorCpf($cpf)
     {
-        $pessoa =  Pessoa::where('pessoa_cpf', $cpf)->first();
+        $pessoa =  Pessoa::where('pessoa_cpf', $cpf)
+        ->join('prontuarios', 'pacientes_pessoa_pessoa_cpf','=','pessoa_cpf')
+        ->join('pessoa_has_tipo_pessoa', 'pessoa_pessoa_cod', '=', 'pessoa_id')
+        ->join('tipo_pessoa', 'tpessoa_cod','=','tipo_pessoa_tpessoa_cod')
+        ->get();
         
     return $pessoa;
 
