@@ -25,6 +25,9 @@ $router->group(['prefix' => '/api'], function() use($router){
     
     $router->get('/pessoas','PessoasController@index');
     $router->get('/pessoa/{cpf}','PessoasController@buscaPorCpf');
+    $router->get('/pessoa/nome/{nome}','PessoasController@buscaPorNome');
+    $router->get('/pessoa/tipo/{cpf}','PessoasController@selecionaTipoAcesso');
+    $router->post('/pessoa/cadastrar', 'PessoasController@store');
 
     $router->get('/paciente/{cpf}', 'PacientesController@show');
 

@@ -18,9 +18,9 @@ class CriarTabelaPessoas extends Migration
             $table->string('pessoa_nome', 25);
             $table->string('pessoa_sobrenome', 40);
             $table->string('pessoa_cpf',11)->unique();
-            $table->string('pessoa_rg', 20);
-            $table->string('pessoa_pai',50);
-            $table->string('pessoa_mae',50);
+            $table->string('pessoa_rg', 20)->default('');
+            $table->string('pessoa_pai',50)->default('');
+            $table->string('pessoa_mae',50)->default('');
             $table->string('pessoa_mail',50);
             $table->char('pessoa_D_E_L_E_T_',1)->default('');
             $table->string('pessoa_login', 11);

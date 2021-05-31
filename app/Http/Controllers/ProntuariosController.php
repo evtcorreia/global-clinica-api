@@ -10,7 +10,11 @@ Class ProntuariosController
         {
             $prontuario = Prontuario::where('pacientes_pessoa_pessoa_cpf' , $cpf)->first();
 
-            $consultas = $prontuario->consultas()->get();
+            $consultas = $prontuario->consultas()
+            ->join('prontuarios', 'prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+            ->join('pacientes', 'pacientes_pessoa_pessoa_cpf', '=', 'pessoa_pessoa_cpf')
+            ->join('pessoas', 'pessoa_cpf','=', 'pessoa_pessoa_cpf')
+            ->get();
 
             return $consultas;
         }
