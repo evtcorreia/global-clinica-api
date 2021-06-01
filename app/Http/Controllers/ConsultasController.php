@@ -28,5 +28,15 @@ class ConsultasController
             ->json(Consulta::create($request->all()),201);
     }
         
+    public function consultasPorClinica($id)
+    {
+        $consultas = Consulta::where('clinicas_id', $id)
+        ->join('clinicas', 'clinicas.id', '=', 'consultas.clinicas_id')
+        ->join('funcionarios', 'funcionarios.clinica_id', '=', 'clinicas.id')
+        ->join('pessoas', 'pessoa_cpf', '=','pessoa_pessoa_cpf')
+        ->get();
+
+        return $consultas;
+    }
     
 }

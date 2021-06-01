@@ -25,9 +25,13 @@ $router->group(['prefix' => '/api'], function() use($router){
     
     $router->get('/pessoas','PessoasController@index');
     $router->get('/pessoa/{cpf}','PessoasController@buscaPorCpf');
+    $router->get('/pessoa/login/{cpf}','PessoasController@buscaPorLogin');
+
     $router->get('/pessoa/nome/{nome}','PessoasController@buscaPorNome');
     $router->get('/pessoa/tipo/{cpf}','PessoasController@selecionaTipoAcesso');
+    $router->get('/pessoa/recepcao/{cpf}','PessoasController@trazerRecepcionista');
     $router->post('/pessoa/cadastrar', 'PessoasController@store');
+    
 
     $router->get('/paciente/{cpf}', 'PacientesController@show');
 
@@ -39,6 +43,7 @@ $router->group(['prefix' => '/api'], function() use($router){
     $router->get('/receita/{id}', 'ReceitasController@show');
 
     $router->get('/consulta/{id}', 'ConsultasController@show');
+    $router->get('/consultas/clinica/{id}', 'ConsultasController@consultasPorClinica');
     $router->post('/consulta', 'ConsultasController@store');
 
     $router->get('telefone/{cpf}', 'PessoasController@buscaTelefones');
@@ -52,5 +57,7 @@ $router->group(['prefix' => '/api'], function() use($router){
     //$router->get('/clinicas/medicos/{id}', 'ClinicasController@especialidades');
     $router->get('/clinicas/especialidades/{id}', 'ClinicasController@especialidades');
     $router->get('/clinicas/medicos/especialidade/{id}', 'EspecialidadesController@medicos');
+
+    
     
 });

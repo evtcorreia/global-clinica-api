@@ -20,6 +20,7 @@ class PessoasController
 
     public function buscaPorCpf($cpf)
     {
+        
         $pessoa =  Pessoa::where('pessoa_cpf', $cpf)
         ->join('prontuarios', 'pacientes_pessoa_pessoa_cpf','=','pessoa_cpf')
         ->join('pessoa_has_tipo_pessoa', 'pessoa_pessoa_cod', '=', 'pessoa_id')
@@ -57,7 +58,7 @@ class PessoasController
     public function selecionaTipoAcesso($cpf)
     {
         $pessoa =  Pessoa::where('pessoa_cpf', $cpf)
-        ->join('prontuarios', 'pacientes_pessoa_pessoa_cpf','=','pessoa_cpf')
+        //->join('prontuarios', 'pacientes_pessoa_pessoa_cpf','=','pessoa_cpf')
         ->join('pessoa_has_tipo_pessoa', 'pessoa_pessoa_cod', '=', 'pessoa_id')
         ->join('tipo_pessoa', 'tpessoa_cod','=','tipo_pessoa_tpessoa_cod')
         ->get();
@@ -80,11 +81,34 @@ class PessoasController
     
         $paciente = Pessoa::where('pessoa_nome' , 'like',  '%'. $request->nome . '%')
         ->join('pacientes', 'pessoa_pessoa_cpf', '=' ,'pessoa_cpf')
-        ->join('prontuarios', 'pacientes_pessoa_pessoa_cpf', '=' ,'pessoa_pessoa_cpf')
-        
+        ->join('prontuarios', 'pacientes_pessoa_pessoa_cpf', '=' ,'pessoa_pessoa_cpf')        
         ->get();
 
         return $paciente;
+    }
+
+    public function trazerRecepcionista($cpf)
+    {
+        $pessoa = Pessoa::where([
+            ['pessoa_cpf', $cpf],
+            ['tpessoa_cod', '=', '3']
+            ])
+        ->join('funcionarios', 'pessoa_pessoa_cpf', '=' ,'pessoa_cpf')
+        ->join('pessoa_has_tipo_pessoa', 'pessoa_has_tipo_pessoa.pessoa_pessoa_cod', '=', 'pessoa_id')
+        ->join('tipo_pessoa', 'tpessoa_cod', '=' ,'tipo_pessoa_tpessoa_cod')
+        ->join('clinicas', 'id', '=', 'clinica_id')        
+        ->first();
+
+        return $pessoa;
+    }
+
+    public function buscaPorLogin($cpf)
+    {
+        
+        $pessoa =  Pessoa::where('pessoa_cpf', $cpf)
+        ->first();
+        
+    return $pessoa;
     }
     
 }

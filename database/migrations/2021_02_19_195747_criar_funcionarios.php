@@ -17,14 +17,14 @@ class CriarFuncionarios extends Migration
             $table->char('funcionarios_D_E_L_E_T_')->default('');
             $table->string('funcionario_registro_numero');
             $table->date('funcionario_dataAdmissao');
-            $table->date('funcionario_dataDemissao');
+            $table->date('funcionario_dataDemissao')->nullable()->default(NULL);
             $table->time('funcionario_horarioTrabalho');
-            $table->bigInteger('clinicas_clinica_cod')->unsigned();
+            $table->bigInteger('clinica_id')->unsigned();
             $table->bigInteger('pessoa_pessoa_cod')->unsigned();
             $table->string('pessoa_pessoa_cpf',11);
             $table->timestamps();
 
-            $table->foreign('clinicas_clinica_cod')
+            $table->foreign('clinica_id')
                     ->references('id')
                     ->on('clinicas');
             $table->foreign('pessoa_pessoa_cod')
