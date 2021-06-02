@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Paciente extends Model
 {
+
+    
     protected $table = 'pacientes';
-    //otected $primaryKey = 'convenio_cod';
+   
+    protected $fillable = ['pessoa_pessoa_cpf', 'paciente_sus_nr', 'paciente_tipo_sang','paciente_fator_rh','pessoa_pessao_cod','pessoa_mae', 'pessoa_mail', 'pessoa_login', 'pessoa_senha', 'enderecos_endereco_id'];
+
 
     public function pessoa()
     {

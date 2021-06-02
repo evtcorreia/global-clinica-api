@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pessoa extends Model
 {
     protected $table = 'pessoas';
-    protected $fillable = ['pessoa_nome', 'pessoa_sobrenome', 'pessoa_cpf', 'pessoa_mail', 'pessoa_login', 'pessoa_senha', 'enderecos_endereco_id'];
+    protected $fillable = ['pessoa_nome', 'pessoa_sobrenome', 'pessoa_cpf','pessoa_rg','pessoa_pai','pessoa_mae', 'pessoa_mail', 'pessoa_login', 'pessoa_senha', 'enderecos_endereco_id'];
 
     public function endereco()
     {

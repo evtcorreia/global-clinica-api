@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 class Endereco extends Model
 {
     protected $table = 'enderecos';
+	protected $fillable = ['endereco_logradouro', 'endereco_bairro', 'endereco_numero', 'endereco_complemento', 'endereco_cep', 'cidades_cidade_id', 'estados_estado_id' ];
 
     public function pessoa()   {
 
