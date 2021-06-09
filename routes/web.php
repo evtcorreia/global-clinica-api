@@ -2,6 +2,7 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
+use App\Http\Controllers\MedicamentosController;
 use App\Http\Controllers\PessoasController;
 
 /*
@@ -43,10 +44,14 @@ $router->group(['prefix' => '/api'], function() use($router){
     $router->get('/receita/{id}', 'ReceitasController@show');
 
     $router->get('/consulta/{id}', 'ConsultasController@show');
-    $router->get('/consultas/clinica/{id}', 'ConsultasController@consultasPorClinica');
+    $router->get('/secretaria/consultas/clinica/{id}', 'ConsultasController@consultasPorClinica');
     $router->post('/consulta', 'ConsultasController@store');
+    $router->post('/consulta/grava/informacoes', 'ConsultasController@gravarDadosConsulta');
+    $router->post('/consulta/alteraHora/', 'ConsultasController@alteraHora');
+    $router->post('/consulta/alteraStatus/', 'ConsultasController@alteraStatus');
+    
 
-    $router->get('telefone/{cpf}', 'PessoasController@buscaTelefones');
+    $router->get('/telefone/{cpf}', 'PessoasController@buscaTelefones');
     $router->get('/endereco/{cpf}', 'PessoasController@buscaEnderecos');
     $router->get('/estados','EstadosController@all');
     $router->get('/estado/busca/{id}','EstadosController@buscaEstado');
@@ -57,6 +62,17 @@ $router->group(['prefix' => '/api'], function() use($router){
     //$router->get('/clinicas/medicos/{id}', 'ClinicasController@especialidades');
     $router->get('/clinicas/especialidades/{id}', 'ClinicasController@especialidades');
     $router->get('/clinicas/medicos/especialidade/{id}', 'EspecialidadesController@medicos');
+    
+    
+    $router->get('/consultas/medico/{cpf}', 'MedicoController@consultaPorMedico');
+
+    $router->get('/medicamentos/all', 'MedicamentosController@all');
+    
+    $router->get('/convenios/all', 'ConvenioController@all');
+
+
+    
+
 
     
     

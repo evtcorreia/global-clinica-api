@@ -16,7 +16,7 @@ class CriarReceitas extends Migration
         Schema::create('receitas', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->date('receita_data');
-            $table->string('receita_descricao');
+            $table->string('receita_descricao')->nullable()->default(NULL);;
             $table->string('receita_D_E_L_E_T_')->default('');
             $table->bigInteger('consultas_consulta_id')->unsigned();
             $table->timestamps();

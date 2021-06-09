@@ -15,8 +15,8 @@ class CriarExames extends Migration
     {
         Schema::create('exames', function (Blueprint $table) {
             $table->increments('exames_cod');
-            $table->date('exame_data');
-            $table->string('exame_resultado');
+            $table->date('exame_data')->nullable()->default(NULL);;
+            $table->string('exame_resultado')->nullable()->default(NULL);;
             $table->char('exame_D_E_L_E_T_')->default('');
             $table->bigInteger('consultas_consulta_id')->unsigned();
             $table->timestamps();

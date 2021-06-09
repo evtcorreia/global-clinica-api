@@ -129,6 +129,13 @@ class PessoasController
                 'paciente_id' => $idPaciente,
                 'pacientes_pessoa_pessoa_cpf' => $request->pessoa_cpf,
             ]);  
+			
+			
+		DB::table('convenio_paciente')->updateOrInsert(
+			[
+				'convenio_id'=>$request->tipoDoc,
+				'paciente_id'=> $idPaciente
+			]);
             
             
         //return response()

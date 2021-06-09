@@ -17,7 +17,7 @@ class CriarPacientes extends Migration
             $table->bigIncrements('id')->unsigned();
             $table->string('paciente_sus_nr',20);
             $table->char('paciente_D_E_L_E_T_',1)->default('');
-            $table->char('paciente_tipo_sang',1);
+            $table->char('paciente_tipo_sang',2);
             $table->char('paciente_fator_rh', 8);
             $table->integer('pessoa_pessoa_cod');
             $table->string('pessoa_pessoa_cpf',11);
