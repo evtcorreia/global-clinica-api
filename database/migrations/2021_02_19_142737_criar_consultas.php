@@ -21,7 +21,7 @@ class CriarConsultas extends Migration
             $table->string('consulta_laudo')->nullable()->default(NULL);
             $table->string ('consulta_obs')->nullable()->default(NULL);
             $table->bigInteger('consulta_status_status_id')->unsigned()->default('1');
-            $table->char('consulta_D_E_L_E_T_',1)->default('');
+            $table->string('consulta_D_E_L_E_T_',1)->default('');
             $table->bigInteger('prontuarios_prontuario_cod')->unsigned();
             $table->string('corpo_clinico_pessoa_pessoa_cpf',11);
             $table->timestamps();

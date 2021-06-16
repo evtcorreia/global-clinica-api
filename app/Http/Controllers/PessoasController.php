@@ -22,7 +22,10 @@ class PessoasController
     public function buscaPorCpf($cpf)
     {
         
-        $pessoa =  Pessoa::where('pessoa_cpf', $cpf)
+        $pessoa =  Pessoa::where([
+            ['pessoa_cpf', $cpf],
+            ['pessoa_D_E_L_E_T_', '=','']
+        ])
         ->join('prontuarios', 'pacientes_pessoa_pessoa_cpf','=','pessoa_cpf')
         ->join('pessoa_has_tipo_pessoa', 'pessoa_pessoa_cod', '=', 'pessoa_id')
         ->join('tipo_pessoa', 'tpessoa_cod','=','tipo_pessoa_tpessoa_cod')
@@ -177,5 +180,19 @@ class PessoasController
         
     return $pessoa;
     }
+	
+	public function alteraTelefone(Request $request)
+	{
+        DB::table('telefones')
+        ->where('telefone_cod', $request->telefone_cod )
+        ->update(
+            [
+				
+                'telefone_area' => $request->telefone_area,
+				'telefone_num' => $request->telefone_num
+                
+            ]);
+    }
+	
     
 }

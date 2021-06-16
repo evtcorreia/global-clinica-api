@@ -2,6 +2,7 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
+use App\Http\Controllers\ConsultasController;
 use App\Http\Controllers\MedicamentosController;
 use App\Http\Controllers\PessoasController;
 
@@ -32,6 +33,7 @@ $router->group(['prefix' => '/api'], function() use($router){
     $router->get('/pessoa/tipo/{cpf}','PessoasController@selecionaTipoAcesso');
     $router->get('/pessoa/recepcao/{cpf}','PessoasController@trazerRecepcionista');
     $router->post('/pessoa/cadastrar', 'PessoasController@store');
+	$router->post('/pessoa/altera/telefone', 'PessoasController@alteraTelefone');
     
 
     $router->get('/paciente/{cpf}', 'PacientesController@show');
@@ -49,10 +51,18 @@ $router->group(['prefix' => '/api'], function() use($router){
     $router->post('/consulta/grava/informacoes', 'ConsultasController@gravarDadosConsulta');
     $router->post('/consulta/alteraHora/', 'ConsultasController@alteraHora');
     $router->post('/consulta/alteraStatus/', 'ConsultasController@alteraStatus');
+	$router->post('/consulta/alteraData/', 'ConsultasController@alteraData');
+    $router->post('/consulta/deleta', 'ConsultasController@deletaConsulta');
     
 
     $router->get('/telefone/{cpf}', 'PessoasController@buscaTelefones');
     $router->get('/endereco/{cpf}', 'PessoasController@buscaEnderecos');
+	$router->post('/endereco/pessoa/altera/bairro', 'EnderecosController@editaBairro');
+	$router->post('/endereco/pessoa/altera/estado', 'EnderecosController@editaEstado');
+	$router->post('/endereco/pessoa/altera/cidade', 'EnderecosController@editaCidade');
+	$router->post('/endereco/pessoa/altera/rua', 'EnderecosController@editaRua');
+	$router->post('/endereco/pessoa/altera/cep', 'EnderecosController@editaCep');
+	
     $router->get('/estados','EstadosController@all');
     $router->get('/estado/busca/{id}','EstadosController@buscaEstado');
     $router->get('/cidades','CidadeController@all');

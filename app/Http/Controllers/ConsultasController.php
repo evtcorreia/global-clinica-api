@@ -31,7 +31,15 @@ class ConsultasController
         
     public function consultasPorClinica($id)
     {
-        $consultas = Consulta::where('clinicas_id', $id)
+        $consultas = Consulta::where([
+			['clinicas_id', $id],
+			['clinica_D_E_L_E_T_', ''],
+			['prontuario_D_E_L_E_T_', ''],
+			['paciente_D_E_L_E_T_',''],
+			['pessoa_D_E_L_E_T_',''],
+			['consulta_D_E_L_E_T_','']
+			
+			])
         
         ->join('clinicas', 'clinicas.id', '=', 'consultas.clinicas_id')
         //->join('funcionarios', 'funcionarios.clinica_id', '=', 'clinicas.id')
@@ -120,5 +128,31 @@ class ConsultasController
                 
             ]);
     }
+	
+	 public function alteraData(Request $request)
+    {
+        DB::table('consultas')
+        ->where('consulta_id', $request->consulta_id )
+        ->update(
+            [
+				
+                'consulta_data' => $request->consulta_data,
+                
+            ]);
+    }
+	
+	public function deletaConsulta(Request $request)
+    {
+        DB::table('consultas')
+        ->where('consulta_id', $request->consulta_id )
+        ->update(
+            [
+				
+                'consulta_D_E_L_E_T_' => $request->consulta_D_E_L_E_T_,
+                
+            ]);
+    }
+	
+	
     
 }
