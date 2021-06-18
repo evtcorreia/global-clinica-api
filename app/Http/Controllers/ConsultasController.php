@@ -58,14 +58,24 @@ class ConsultasController
     public function gravarDadosConsulta(Request $request)
     {
 
-		//var_dump($request->exame_data);
-		//exit();
 
-      //var_dump($request->medicamento_id);
-      //exit();
-       //$m = json_decode( $request->medicamento_id);
+        
 
-    
+            $obj = $request->medicamento;
+
+            
+        
+            foreach($request->medicamento as $medicamentos)
+            {
+                foreach($medicamentos as $key=>$valor){
+                    $arr[$key][] =  $valor;
+                }
+            }
+
+
+
+            //var_dump($arr[0][0]);
+            //exit();
 
         DB::table('consultas')
             ->where('consulta_id', $request->consulta_id )
@@ -92,6 +102,45 @@ class ConsultasController
                 'consultas_consulta_id' => $request->consultas_consulta_id
             ]);
 
+
+                    $posologiaId = '';
+                    
+
+                   // var_dump($rot);
+                   //exit();
+                    for($i = 0; $i < count($arr); $i++)
+                    {
+                        /*
+                        DB::table('medicamento_receita')->updateOrInsert(
+                            [
+                            'medicamento_id' => $arr[$i][0],
+                            'receita_id' => $idReceita
+                            
+                            ]);
+                            */
+                        //for($l = 1; $l <= 3; $l++)
+                        //{
+                            $posologiaId = DB::table('posologias')->insertGetId(
+                                    [   
+                                    'posologia_posologia' => $arr[$i][1],
+                                    'posologia_quantidade' => $arr[$i][2],
+                                    'posologia_tipo' => $arr[$i][3],
+                                ]);
+                                
+                                DB::table('medicamento_receita')->insert(
+                                    [
+                                        'medicamento_id' => $arr[$i][0],
+                                        'receita_id' => $idReceita,
+                                    'posologias_id' => $posologiaId,
+                                    
+                                ]);
+                
+                        //}
+            
+                    }
+                
+
+/*        
             foreach( $request->medicamento_id as $medicamento)
         {
             DB::table('medicamento_receita')->insert(
@@ -102,7 +151,7 @@ class ConsultasController
     
         }
 
-        
+ */       
 
     }
 
