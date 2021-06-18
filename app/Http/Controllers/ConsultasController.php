@@ -59,9 +59,12 @@ class ConsultasController
     {
 
 
-        
 
-            $obj = $request->medicamento;
+
+            $obj = json_encode($request->medicamento);
+
+            var_dump($obj);
+            exit();
 
             
         

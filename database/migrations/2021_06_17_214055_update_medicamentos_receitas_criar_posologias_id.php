@@ -14,12 +14,10 @@ class UpdateMedicamentosReceitasCriarPosologiasId extends Migration
     public function up()
     {
         Schema::table('medicamento_receita', function (Blueprint $table) {
-            $table->bigIncrements('posologias_id');
+            $table->bigInteger('posologias_id');
 
 
-            $table->foreign('posologias_id')
-                    ->references('id')
-                    ->on('posologias');
+          
            
         });
     }
