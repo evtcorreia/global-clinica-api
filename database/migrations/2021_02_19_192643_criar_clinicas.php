@@ -19,6 +19,8 @@ class CriarClinicas extends Migration
             $table->string('clinica_cnpj',18);
             $table->string('clinica_mail', 50);
             $table->char('clinica_D_E_L_E_T_')->default('');
+            $table->string('clinica_telefone_area');
+            $table->string('clinica_telefone_num');
             $table->timestamps();
 
 

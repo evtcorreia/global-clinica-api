@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Clinica extends Model
 {
     protected $table = 'clinicas';
+    protected $fillable = ['clinica_nome', 'clinica_cnpj', 'clinica_mail', 'clinica_D_E_L_E_T_', 'enderecos_endereco_id', 'clinica_tel', 'clinica_tel_area' ];
 
     public function clinicas()
     {

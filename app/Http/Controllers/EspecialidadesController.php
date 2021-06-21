@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Especialidade;
+use App\Http\Controllers\Controller;
 
     
 
@@ -16,5 +18,10 @@ use App\Especialidade;
             ->get();
 
             return $medicos;
+        }
+
+        public function show()
+        {
+            return Especialidade::all();
         }
     }

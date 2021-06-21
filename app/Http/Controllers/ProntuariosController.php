@@ -68,4 +68,146 @@ Class ProntuariosController
 
             return $consultas;
         }
+
+        public function comorbidade($id)
+        {
+            $consultas = Prontuario::Where([
+			
+				['prontuario_cod', $id],
+				['prontuario_D_E_L_E_T_', '=',''],
+				
+				['comorbidades_D_E_L_E_T_', '=',''],
+				//['alergia_D_E_L_E_T_', '=',''],
+				//['cirurgia_D_E_L_E_T_', '=',''],
+				//['hisFam_D_E_L_E_T_', '=',''],
+				//['dst_D_E_L_E_T_', '=',''],
+			])
+			
+			->join('comorbidades', 'comorbidades.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('alergias', 'alergias.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('cirurgias', 'cirurgias.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('historicoFamiliarDoencas', 'historicoFamiliarDoencas.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('dst', 'dst.prontuarios_prontuario_cod', '=' , 'prontuario_cod')            
+            ->get();
+
+            return $consultas;
+        }
+        public function alergias($id)
+        {
+            $consultas = Prontuario::Where([
+			
+				['prontuario_cod', $id],
+				['prontuario_D_E_L_E_T_', '=',''],
+				
+				['alergia_D_E_L_E_T_', '=',''],
+				//['alergia_D_E_L_E_T_', '=',''],
+				//['cirurgia_D_E_L_E_T_', '=',''],
+				//['hisFam_D_E_L_E_T_', '=',''],
+				//['dst_D_E_L_E_T_', '=',''],
+			])
+			
+			->join('alergias', 'alergias.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('alergias', 'alergias.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('cirurgias', 'cirurgias.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('historicoFamiliarDoencas', 'historicoFamiliarDoencas.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('dst', 'dst.prontuarios_prontuario_cod', '=' , 'prontuario_cod')            
+            ->get();
+
+            return $consultas;
+        }
+        public function medControl($id)
+        {
+            $consultas = Prontuario::Where([
+			
+				['prontuario_cod', $id],
+				['prontuario_D_E_L_E_T_', '=',''],
+				
+				['medicamento_controlado_D_E_L_E_T_', '=',''],
+				//['alergia_D_E_L_E_T_', '=',''],
+				//['cirurgia_D_E_L_E_T_', '=',''],
+				//['hisFam_D_E_L_E_T_', '=',''],
+				//['dst_D_E_L_E_T_', '=',''],
+			])
+			
+			->join('medicamento_controlado', 'medicamento_controlado.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('alergias', 'alergias.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('cirurgias', 'cirurgias.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('historicoFamiliarDoencas', 'historicoFamiliarDoencas.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('dst', 'dst.prontuarios_prontuario_cod', '=' , 'prontuario_cod')            
+            ->get();
+
+            return $consultas;
+        }
+        public function dst($id)
+        {
+            $consultas = Prontuario::Where([
+			
+				['prontuario_cod', $id],
+				['prontuario_D_E_L_E_T_', '=',''],
+				
+				['dst_D_E_L_E_T_', '=',''],
+				//['alergia_D_E_L_E_T_', '=',''],
+				//['cirurgia_D_E_L_E_T_', '=',''],
+				//['hisFam_D_E_L_E_T_', '=',''],
+				//['dst_D_E_L_E_T_', '=',''],
+			])
+			
+			->join('dst', 'dst.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('alergias', 'alergias.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('cirurgias', 'cirurgias.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('historicoFamiliarDoencas', 'historicoFamiliarDoencas.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('dst', 'dst.prontuarios_prontuario_cod', '=' , 'prontuario_cod')            
+            ->get();
+
+            return $consultas;
+        }
+        public function DoencaFam($id)
+        {
+            $consultas = Prontuario::Where([
+			
+				['prontuario_cod', $id],
+				['prontuario_D_E_L_E_T_', '=',''],
+				
+				['hisFam_D_E_L_E_T_', '=',''],
+				//['alergia_D_E_L_E_T_', '=',''],
+				//['cirurgia_D_E_L_E_T_', '=',''],
+				//['hisFam_D_E_L_E_T_', '=',''],
+				//['dst_D_E_L_E_T_', '=',''],
+			])
+			
+			->join('historicoFamiliarDoencas', 'historicoFamiliarDoencas.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('alergias', 'alergias.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('cirurgias', 'cirurgias.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('historicoFamiliarDoencas', 'historicoFamiliarDoencas.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('dst', 'dst.prontuarios_prontuario_cod', '=' , 'prontuario_cod')            
+            ->get();
+
+            return $consultas;
+        }
+        public function cirurgia($id)
+        {
+            $consultas = Prontuario::Where([
+			
+				['prontuario_cod', $id],
+				['prontuario_D_E_L_E_T_', '=',''],
+				
+				['cirurgia_D_E_L_E_T_', '=',''],
+				//['alergia_D_E_L_E_T_', '=',''],
+				//['cirurgia_D_E_L_E_T_', '=',''],
+				//['hisFam_D_E_L_E_T_', '=',''],
+				//['dst_D_E_L_E_T_', '=',''],
+			])
+			
+			->join('cirurgias', 'cirurgias.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('alergias', 'alergias.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('cirurgias', 'cirurgias.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('historicoFamiliarDoencas', 'historicoFamiliarDoencas.prontuarios_prontuario_cod', '=' , 'prontuario_cod')
+			//->join('dst', 'dst.prontuarios_prontuario_cod', '=' , 'prontuario_cod')            
+            ->get();
+
+            return $consultas;
+        }
+
+        
+
     }

@@ -2,26 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Consulta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Pessoa;
 
-class MedicoController extends Controller
+class FuncionarioController extends Controller
 {
-    public function consultaPorMedico($cpf)
-    {
-
-        
-        $consultas = Consulta::where('corpo_clinico_pessoa_pessoa_cpf', $cpf)
-		->join('prontuarios','prontuario_cod', '=', 'prontuarios_prontuario_cod')
-		->join('pacientes','pacientes_pessoa_pessoa_cpf', '=', 'pessoa_pessoa_cpf')
-		->join('pessoas','pessoa_cpf', '=', 'pessoa_pessoa_cpf')
-		->get();
-
-        return $consultas;
-    }
-
-
     public function store(Request $request)
     {
         $idEndereco = DB::table('enderecos')->insertGetId(
@@ -66,31 +52,8 @@ class MedicoController extends Controller
                 'pessoa_pessoa_cpf' => $request->pessoa_cpf
             ]);
 
-    $idClinico =DB::table('clinicos')->insertGetId(
-        [
-            'clinico_prof_doc' => $request->clinico_prof_doc,
-            'pessoa_pessoa_cpf' => $request->pessoa_cpf,
-            'tipo_documento_tipo_id' => $request->tipo_documento_tipo_id
-            
-        ]);
 
-    DB::table('clinico_especialidade')->insert(
 
-        [
-            'clinico_id' => $idClinico,
-            'especialidade_id' => $request->especialidade_id
-
-        ]);
-
-    DB::table('clinica_clinico')->insert(
-        [
-            'clinico_id' => $idClinico,
-            'clinica_id' => $request->clinica_id
-        ]
-        );    
-    
-
-/*
     DB::table('funcionarios')->insert(
             [
                 'funcionario_dataAdmissao' => $request->funcionario_dataAdmissao,
@@ -104,6 +67,59 @@ class MedicoController extends Controller
 
             ]
     ) ; 
-    */
+                  
+/*
+    $idPaciente =  DB::table('pacientes')->insertGetId(
+        [
+            'pessoa_pessoa_cpf'=> $request->pessoa_cpf,
+            'paciente_sus_nr' => $request->paciente_sus_nr,
+            'paciente_tipo_sang' => $request->paciente_tipo_sang,
+            'paciente_fator_rh' => $request->paciente_fator_rh,
+            'pessoa_pessoa_cod' => $idPessoas
+        ]);
+  
+    DB::table('prontuarios')->insert(
+        [
+            'paciente_id' => $idPaciente,
+            'pacientes_pessoa_pessoa_cpf' => $request->pessoa_cpf,
+        ]);  
+        
+        
+    DB::table('convenio_paciente')->updateOrInsert(
+        [
+            'convenio_id'=>$request->tipoDoc,
+            'paciente_id'=> $idPaciente
+        ]);
+  */        
+        
+    //return response()
+       // ->json(Pessoa::create($request->all()),201);
+
+}
+
+    public function informacoes($cpf)
+    {
+        $funcionario = Pessoa::where([
+            ['pessoa_cpf', $cpf],
+            ['pessoa_D_E_L_E_T_', '']
+        ])
+        ->join('funcionarios', 'pessoa_pessoa_cpf', '=' ,'pessoa_cpf')
+        ->join('clinicas', 'clinicas.id', '=', 'clinica_id')
+        ->first();
+
+        return $funcionario;
+    }
+
+    public function demissaoFuncionario(Request $request)
+    {
+        DB::table('funcionarios')
+        ->where('pessoa_pessoa_cpf', $request->pessoa_pessoa_cpf)
+        ->update(
+            [
+                'funcionario_dataDemissao' => $request->funcionario_dataDemissao,
+                
+                
+                
+            ]);
     }
 }

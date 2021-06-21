@@ -72,14 +72,52 @@ $router->group(['prefix' => '/api'], function() use($router){
     //$router->get('/clinicas/medicos/{id}', 'ClinicasController@especialidades');
     $router->get('/clinicas/especialidades/{id}', 'ClinicasController@especialidades');
     $router->get('/clinicas/medicos/especialidade/{id}', 'EspecialidadesController@medicos');
+    $router->get('/clinicas/medicos/especialidade/{id}', 'EspecialidadesController@medicos');
     
     
     $router->get('/consultas/medico/{cpf}', 'MedicoController@consultaPorMedico');
-
+    
     $router->get('/medicamentos/all', 'MedicamentosController@all');
     
     $router->get('/convenios/all', 'ConvenioController@all');
+    
+	$router->post('/prontuario/comorbidade/store', 'ComorbidadesController@store');
+	$router->post('/prontuario/cirurgia/store', 'CirurgiasController@store');
+	$router->post('/prontuario/historico/store', 'HistoricoFamiliaController@store');
+	$router->post('/prontuario/alergias/store', 'AlergiasController@store');
+	$router->post('/prontuario/dst/store', 'DSTController@store');
+	$router->post('/prontuario/medControl/store', 'MedicamentosController@medControlStore');
+	
+    
+    $router->get('/prontuario/informa/comorbidade/{id}', 'ProntuariosController@comorbidade');
+    $router->get('/prontuario/informa/alergias/{id}', 'ProntuariosController@alergias');
+    $router->get('/prontuario/informa/medControl/{id}', 'ProntuariosController@medControl');
+    $router->get('/prontuario/informa/dst/{id}', 'ProntuariosController@dst');
+    $router->get('/prontuario/informa/DoencaFam/{id}', 'ProntuariosController@DoencaFam');
+    $router->get('/prontuario/informa/cirurgia/{id}', 'ProntuariosController@cirurgia');
 
+
+    
+    //admin
+    
+    
+	$router->post('/clinica/cadastrar', 'ClinicasController@store');
+	$router->post('/funcionario/cadastrar', 'FuncionarioController@store');
+	$router->post('/medico/cadastrar', 'MedicoController@store');
+	$router->get('/especialidades', 'EspecialidadesController@show');
+	
+    
+    $router->get('/informacoes/funcionarios/{cpf}', 'FuncionarioController@informacoes');
+    $router->get('/buscar/funcionarios/{id}', 'ClinicasController@funcionarioPorClinica');
+    $router->get('/clinicaDoAdm/{cpf}', 'ClinicasController@clinicaDoAdm');
+    
+    $router->post('/demissao/funcionario/data', 'FuncionarioController@demissaoFuncionario');
+
+
+
+
+   
+    
 
     
 

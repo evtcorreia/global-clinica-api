@@ -166,7 +166,7 @@ class PessoasController
         ->join('funcionarios', 'pessoa_pessoa_cpf', '=' ,'pessoa_cpf')
         ->join('pessoa_has_tipo_pessoa', 'pessoa_has_tipo_pessoa.pessoa_pessoa_cod', '=', 'pessoa_id')
         ->join('tipo_pessoa', 'tpessoa_cod', '=' ,'tipo_pessoa_tpessoa_cod')
-        ->join('clinicas', 'id', '=', 'clinica_id')        
+        ->join('clinicas', 'clinicas.id', '=', 'clinica_id')        
         ->first();
 
         return $pessoa;

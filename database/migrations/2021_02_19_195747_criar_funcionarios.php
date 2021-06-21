@@ -14,11 +14,13 @@ class CriarFuncionarios extends Migration
     public function up()
     {
         Schema::create('funcionarios', function (Blueprint $table) {
+
+            $table->increments('id')->unsigned();
             $table->char('funcionarios_D_E_L_E_T_')->default('');
-            $table->string('funcionario_registro_numero');
+            //$table->string('funcionario_registro_numero')->nullable()->default(NULL);
             $table->date('funcionario_dataAdmissao');
             $table->date('funcionario_dataDemissao')->nullable()->default(NULL);
-            $table->time('funcionario_horarioTrabalho');
+            $table->string('funcionario_horarioTrabalho');
             $table->bigInteger('clinica_id')->unsigned();
             $table->bigInteger('pessoa_pessoa_cod')->unsigned();
             $table->string('pessoa_pessoa_cpf',11);

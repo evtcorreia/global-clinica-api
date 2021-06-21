@@ -63,8 +63,8 @@ class ConsultasController
 
             $obj = json_encode($request->medicamento);
 
-            var_dump($obj);
-            exit();
+            //var_dump($obj);
+            //exit();
 
             
         
@@ -86,7 +86,8 @@ class ConsultasController
             [
                 'consulta_info' => $request->consulta_info,
                 'consulta_laudo' => $request->consulta_laudo,
-                'consulta_obs' => $request->consulta_obs
+                'consulta_obs' => $request->consulta_obs,
+                'consulta_status_status_id' => $request->consulta_status_status_id
             ]);
             
 
@@ -102,7 +103,8 @@ class ConsultasController
             [
                 'receita_data' => $request->receita_data,
                 'receita_descricao' => $request->receita_descricao,
-                'consultas_consulta_id' => $request->consultas_consulta_id
+                'consultas_consulta_id' => $request->consultas_consulta_id,
+                
             ]);
 
 
