@@ -112,6 +112,12 @@ $router->group(['prefix' => '/api'], function() use($router){
     $router->get('/clinicaDoAdm/{cpf}', 'ClinicasController@clinicaDoAdm');
     
     $router->post('/demissao/funcionario/data', 'FuncionarioController@demissaoFuncionario');
+    
+    
+    $router->get('/adm/relatorios/consulta/dia/{dtIni}/{dtFim}', 'ConsultasController@consultaPorData');
+
+
+
 
 
 

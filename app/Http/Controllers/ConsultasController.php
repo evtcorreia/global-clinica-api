@@ -206,6 +206,36 @@ class ConsultasController
                 
             ]);
     }
+
+
+    public function consultaPorData($dtIni, $dtFim)
+    {
+        $clinicaDoAdm = DB::table('consultas')
+        ->whereBetween('consulta_data', [$dtIni, $dtFim])
+        // ->join('funcionarios', 'pessoa_pessoa_cpf', '=' ,'pessoa_cpf' )
+        
+        ->join('clinicas', 'clinicas.id', '=', 'clinicas_id')
+        ->join('prontuarios','prontuarios_prontuario_cod', '=', 'prontuario_cod')
+        ->join('pacientes', 'paciente_id', '=', 'pacientes.id')
+        ->join('pessoas', 'pessoa_pessoa_cpf', '=','pessoa_cpf')
+        ->orderBy('consulta_data',  'asc')
+        ->get();
+        
+        
+        /*
+        Consulta::where([
+            ['consulta_data', '>', $dtIni],
+            ['consulta_data', '<', $dtFim],
+            ['pessoa_D_E_L_E_T_' , ''],
+            
+        ])
+        ->join('funcionarios', 'pessoa_pessoa_cpf', '=' ,'pessoa_cpf' )
+        ->join('clinicas', 'clinicas.id', '=', 'clinica_id')
+        ->get();
+
+*/
+        return $clinicaDoAdm;
+    }
 	
 	
     

@@ -110,4 +110,8 @@ use Illuminate\Support\Facades\DB;
                 return $clinicaDoAdm;
             }
 
+
+           
+
+
     }
