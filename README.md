@@ -1,2 +1,2 @@
-# global-clinica-api
- Api de global-clinica
+# Global Clinica - API
+ Documentação em construção
